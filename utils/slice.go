@@ -113,7 +113,7 @@ func UniqString(elements []string) []string {
 }
 
 // UniqInt64 :nodoc:
-func UniqStringInt64(elements []int64) []int64 {
+func UniqInt64(elements []int64) []int64 {
 	encountered := map[int64]bool{}
 
 	// Create a map of all unique elements.
