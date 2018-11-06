@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // StandardizeSpaces -> Join long query to one line query
@@ -54,4 +55,14 @@ func String2Int64WithDefault(s string, d int64) int64 {
 		return d
 	}
 	return i
+}
+
+// StringToDate :nodoc:
+func StringToDate(s string) time.Time {
+	t, err := time.Parse(time.RFC3339, s)
+	if err != nil {
+		d, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05.000Z")
+		return d
+	}
+	return t
 }

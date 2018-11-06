@@ -2,6 +2,7 @@ package utils
 
 import (
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -41,4 +42,9 @@ func TestString2Int64WithDefault(t *testing.T) {
 	assert.Equal(t, int64(10), String2Int64WithDefault("10", 0))
 	assert.Equal(t, int64(20), String2Int64WithDefault("20", 0))
 	assert.Equal(t, int64(999), String2Int64WithDefault("20abc", 999))
+}
+
+func TestStringToDate(t *testing.T) {
+	d, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05.000Z")
+	assert.Equal(t, d, StringToDate("2006-01-02T15:04:05.000Z"))
 }
