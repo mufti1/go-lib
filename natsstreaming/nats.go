@@ -4,6 +4,8 @@ import (
 	"time"
 
 	"github.com/jpillora/backoff"
+	log "github.com/sirupsen/logrus"
+
 	"github.com/kumparan/go-lib/utils"
 	"github.com/nats-io/go-nats-streaming"
 )
@@ -33,8 +35,9 @@ type (
 )
 
 // NewNATS :nodoc:
-func NewNATS(clusterID, clientID, url string) (*NATS, error) {
-	nc, err := stan.Connect(clusterID, clientID, stan.NatsURL(url))
+func NewNATS(clusterID, clientID, url string, options ...stan.Option) (*NATS, error) {
+	options = append(options, stan.NatsURL(url))
+	nc, err := stan.Connect(clusterID, clientID, options...)
 	if err != nil {
 		return nil, err
 	}
