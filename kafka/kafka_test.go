@@ -8,7 +8,7 @@ import (
 
 	"github.com/Shopify/sarama"
 	"github.com/Shopify/sarama/mocks"
-	"github.com/mufti1/go-lib/kafka"
+	"github.com/kumparan/go-lib/kafka"
 )
 
 func TestPublish(t *testing.T) {
